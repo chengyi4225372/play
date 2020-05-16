@@ -66,8 +66,9 @@
                     duration:8000,
                     callback:function (){
                         /* 弹出*/
-                        alert(txt);
+                        //alert(txt);
                         turnplate.bRotate = !turnplate.bRotate;
+                        window.location.href ="{:url('index/infos')}";
                     }
                 });
             };
