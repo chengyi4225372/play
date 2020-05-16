@@ -6,7 +6,7 @@
                   <span class="x-red">*</span>qq账号
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="user"  class="layui-input">
+                  <input type="text" id="user" value="{$info.qqname}"  class="layui-input">
               </div>
           </div>
 
@@ -15,11 +15,29 @@
                   <span class="x-red">*</span>qq密码
               </label>
               <div class="layui-input-inline">
-                  <input type="text" id="pwd"  class="layui-input">
+                  <input type="text" id="pwd"  value="{$info.qqpwd}" class="layui-input">
               </div>
           </div>
-            <input type="hidden"  id="mid" value="" />
+            <div class="layui-form-item">
+                <label for="L_username" class="layui-form-label">
+                    <span class="x-red">*</span>游戏大区
+                </label>
+                <div class="layui-input-inline">
 
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label for="L_username" class="layui-form-label">
+                    <span class="x-red">*</span>游戏名称
+                </label>
+                <div class="layui-input-inline">
+                    <input type="text" id="palyname" value="{$info.palyname}" class="layui-input">
+                </div>
+            </div>
+
+            <!--
+            <input type="hidden"  id="mid" value="" />
           <div class="layui-form-item">
               <label for="L_repass" class="layui-form-label">
               </label>
@@ -27,6 +45,7 @@
                   提交
               </button>
           </div>
+          -->
       </form>
     </div>
     <script>

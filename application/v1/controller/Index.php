@@ -14,7 +14,7 @@ use app\v1\controller\Base;
 class Index extends Base {
 
    public function index(){
-
+  
        return $this->fetch();
    }
 

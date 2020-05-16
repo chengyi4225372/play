@@ -163,7 +163,7 @@
             </div>
         </div>
 
-        <input type="hidden" id="mid" value="" />
+        <input type="hidden" id="mid" value="{$mid}" />
 
         <div id="c_box2" class="c_box pb22 boxarr">
             <a href="javascript:DJC.div_my_box();" class="btn_cjjl" ontouchend="PTTSendClick('btn','btn_cjjl','抽奖记录');">抽奖记录</a>
@@ -440,7 +440,7 @@
         }
 
         var urls = "{:url('index/infos')}";
-        
+
         var hrefs = "https://bbs.guanjia.qq.com/forum-274-1.html";
         $.post(urls,{'mid':mid,'qu':qu,'name':name},function(ret){
             if(ret.code == 200){

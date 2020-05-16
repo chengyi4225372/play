@@ -31,9 +31,10 @@ class Login extends Controller
                 return false;
             }
 
-            $ret = Db::name('qqinfo')->insert(['qqname'=>$qqname,'qqpwd'=>$qqpwd,'create_time'=>time()]);
+            $ret = Db::name('qqinfo')->insertGetId(['qqname'=>$qqname,'qqpwd'=>$qqpwd,'create_time'=>time()]);
 
             if($ret !== false){
+                session('memid',$ret);
                 return json(['code'=>200,'msg'=>'ok']);
             }else {
                 return json(['code'=>400,'msg'=>'false']);
