@@ -7,9 +7,8 @@
         </div>
         <ul class="layui-nav right" lay-filter="">
           <li class="layui-nav-item">
-            <a href="javascript:;">admin</a>
+            <a href="javascript:;">{$Think.session.amember['users']}</a>
             <dl class="layui-nav-child"> <!-- 二级菜单 -->
-              <dd><a onclick="x_admin_show('个人信息','{:url('index/index')}')">个人信息</a></dd>
               <dd><a href="{:url('login/loginout')}">退出</a></dd>
             </dl>
           </li>

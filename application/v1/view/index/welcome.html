@@ -13,7 +13,7 @@
     <body>
     <div class="x-body layui-anim layui-anim-up">
         <blockquote class="layui-elem-quote">欢迎管理员：
-            <span class="x-red">admin</span>！当前时间:</blockquote>
+            <span class="x-red">{$Think.session.amember['users']}</span>！当前时间:{:date('Y-m-d:H:i:s',time())}</blockquote>
         <fieldset class="layui-elem-field">
             <legend>数据统计</legend>
             <div class="layui-field-box">
