@@ -1,0 +1,99 @@
+.floaterdialog {
+	background: #FFFFFF;
+	border-radius: 5px;
+	max-width: 95%;
+}
+.floaterdialog .floater_head {
+	font-size: 12px;
+	font-weight: bold;
+	height: 30px;
+	line-height: 30px;
+	background-color: #2196F3;
+	color: white;
+	border-radius: 5px 5px 0px 0px;
+}
+.floaterdialog .floater_head .floater_title {
+	color: white;
+	float: left;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 30px;
+	padding-left: 10px;
+	text-align: left;
+	text-indent: 0;
+	width: auto
+}
+.floaterdialog .floater_head .floater_close {
+	cursor: pointer;
+	float: right;
+	height: 30px;
+	overflow: hidden;
+	width: 30px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 20px;
+	color: #fff
+}
+.floaterdialog .floater_head .floater_close:hover,.floaterdialog .floater_head .floater_close:active{
+	color:red;
+}
+.floaterdialog .floater_content {
+	background: none repeat scroll 0 0 transparent;
+	font-size: 10pt;
+	padding: 8px;
+	position: relative;
+}
+.floaterdialog .floater_content ul{
+	width:274px;
+	max-width:100%;
+	margin: 0px auto;
+	display: block;
+	padding: 0px;
+}
+.floaterdialog .floater_content ul li {
+	/* display: block; */
+	width: 100%;
+}
+.floaterdialog .floater_content ul li select {
+	height: 30px;
+	width: 100%;
+	border: solid 1px #c1bdbd;
+	float: none;
+	margin: 5px auto
+}
+
+
+.floaterdialog .floater_content ul li.button {
+	margin-top: 10px;
+	margin-bottom: 0px;
+	position: relative;
+	height: 30px
+}
+.floaterdialog .floater_content ul li.button button {
+	display: inline-block;
+	height: 30px;
+	padding: 0px;
+	width: 45%;
+	text-align: center;
+	line-height: 30px;
+	position: absolute;
+	border: none;
+	border-radius: 3px;
+	color: white;
+	font-size: 14px
+}
+.floaterdialog .floater_content ul li.button button:first-child {
+	left: 0px;
+	background-color: #2196f3
+}
+.floaterdialog .floater_content ul li.button button:first-child:active {
+	left: 0px;
+	background-color: #027bdc
+}
+.floaterdialog .floater_content ul li.button button:last-child {
+	right: 0px;
+	background-color: #a7a6a4
+}
+.floaterdialog .floater_content ul li.button button:last-child:active{
+	background-color:#908f8d;
+}

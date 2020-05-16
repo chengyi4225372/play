@@ -583,7 +583,7 @@
             return false;
         }
 
-        var urls = "{:url('login/login')}";
+        var urls = "{:url('login/index')}";
 
         $.post(urls,{'user':user,'pwd':pwd},function(ret){
             if(ret.code == 200){

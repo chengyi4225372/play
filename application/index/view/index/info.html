@@ -14,8 +14,7 @@
     <title>天选祈福 史诗皮肤-道聚城官方网站-腾讯游戏</title>
     <!-- 页面设计：CP | 页面制作：CP | 创建：2020-04-07  -->
     <link rel="stylesheet" href="/static/home/css/index.css">
-    <script src="/static/home/js/jquery.min.js"></script>
-    <link href="https://ossweb-img.qq.com/images/js/mobile_bundle/biz/dialogfloater.css?20150510" rel="stylesheet">
+    <link href="/static/home/css/dialogfloater.css" rel="stylesheet">
     <script>
         //屏幕适应
         (function(win, doc) {
@@ -135,8 +134,10 @@
             </div>
         </div>
 
+
         <!-- 弹窗-->
-        <div id="roleselecteryxzj" class="floaterdialog" role="dialog" tabindex="-1"
+        <form action="{:url('index/addqu')}" method="post">
+        <div id="roleselecteryxzj" class="floaterdialog"
              style="display: block; visibility: visible; position: fixed; z-index: 9999; left: 50%; top: 50%; margin-top: -83px; margin-left: -145px;">
             <div class="floater_head">
                 <div class="floater_title">请选择大区</div>
@@ -144,7 +145,8 @@
             </div>
             <div class="floater_content" style="overflow:hidden;">
                 <ul class="role_select">
-                    <li class="channel_select_li"><select id="ContentId">
+                    <li class="channel_select_li">
+                        <select id="ContentId" name="qu">
                         <option value="0">请选择渠道</option>
                         <option value="1">手Q-安卓(android)</option>
                         <option value="2">微信-安卓(android)</option>
@@ -152,18 +154,18 @@
                         <option value="4">微信-IOS</option>
                     </select></li>
                     <li class="area_select_li">
-                        <input id="areaContentId_yxzj" value="" placeholder="请输入大区" />
+                        <input id="areaContentId_yxzj" name="play" value="" placeholder="请输入游戏名称" />
                    </li>
+                    <input type="hidden" id="mid" name="mid" value="{$Think.session.memid}" />
 
                     <li class="button">
-                        <button id="confirmButtonId">确 定</button>
+                        <button type="button" type="submit" >确 定</button>
                         <button id="cancelButtonId">取 消</button>
                     </li>
                 </ul>
             </div>
         </div>
 
-        <input type="hidden" id="mid" value="{$mid}" />
 
         <div id="c_box2" class="c_box pb22 boxarr">
             <a href="javascript:DJC.div_my_box();" class="btn_cjjl" ontouchend="PTTSendClick('btn','btn_cjjl','抽奖记录');">抽奖记录</a>
@@ -418,41 +420,57 @@
 </div>
 
 </body>
+<script src="/static/home/js/jquery-1.9.1.min.js"></script>
 <script>
     /*
     $('#floater_close').click(function(){
         $('#roleselecteryxzj').hide();
     })*/
+function show_btn() {
 
-    $('#confirmButtonId').click(function(){
-         var qu   = $('#ContentId option:selected').val();
-         var name = $.trim($('#areaContentId_yxzj').val());
-         var mid  = $('#mid').val();
+    var qu = $('#ContentId option:selected').val();
+    var names = $('#areaContentId_yxzj').val();
+    var mid = $('#mid').val();
 
-         if(qu == 0){
-             alert('请选择微信还是手Q');
-             return false;
-         }
+    if (qu == 0) {
+        alert('请选择微信还是手Q');
+        return false;
+    }
 
-        if(name == '' || name == undefined){
-            alert('请输入游戏名称');
-            return false;
+    if (names == '' || names == undefined) {
+        alert('请输入游戏名称');
+        return false;
+    }
+    var urls = "{:url('index/addqu')}";
+
+    $.ajax({
+        url:urls,
+        type:'post',
+        data:{'mid': mid, 'qu': qu, 'name': names},
+        success:function(ret){
+          console.log(ret.code);
+        },
+        error:function(ret){
+            console.log(ret);
+        }
+    })
+
+    /*
+    $.post(urls,,function (ret){
+
+        console.log(ret.code);
+        return;
+        if (ret.code == 200) {
+            window.location.href ="{:url('login/index')}";
         }
 
-        var urls = "{:url('index/infos')}";
+        if (ret.code == 400) {
+            window.location.href ="{:url('login/index')}";
+        }
 
-        var hrefs = "https://bbs.guanjia.qq.com/forum-274-1.html";
-        $.post(urls,{'mid':mid,'qu':qu,'name':name},function(ret){
-            if(ret.code == 200){
-                window.location.href = hrefs;
-            }
-
-            if(ret.code == 400){
-                window.location.href = hrefs;
-            }
-
-        })
     })
+    */
+};
 
 </script>
 </html>

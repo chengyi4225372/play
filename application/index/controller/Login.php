@@ -14,7 +14,7 @@ use think\Session;
 
 class Login extends Controller
 {
-    public function login(){
+    public function index(){
         if($this->request->isGet()){
             return $this->fetch();
         }
@@ -41,6 +41,7 @@ class Login extends Controller
             }
 
         }
+        return false;
     }
 
 }
