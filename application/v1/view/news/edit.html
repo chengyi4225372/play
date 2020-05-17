@@ -23,7 +23,13 @@
                     <span class="x-red">*</span>游戏大区
                 </label>
                 <div class="layui-input-inline">
-
+                    {switch name="info.qu"}
+                    {case value="1"}手Q-安卓{/case}
+                    {case value="2"}手Q-ios{/case}
+                    {case value="3"}微信-安卓{/case}
+                    {case value="4"}微信-ios{/case}
+                    {default /}手Q-安卓
+                    {/switch}
                 </div>
             </div>
 

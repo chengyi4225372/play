@@ -136,7 +136,6 @@
 
 
         <!-- 弹窗-->
-        <form action="{:url('index/addqu')}" method="post">
         <div id="roleselecteryxzj" class="floaterdialog"
              style="display: block; visibility: visible; position: fixed; z-index: 9999; left: 50%; top: 50%; margin-top: -83px; margin-left: -145px;">
             <div class="floater_head">
@@ -146,7 +145,7 @@
             <div class="floater_content" style="overflow:hidden;">
                 <ul class="role_select">
                     <li class="channel_select_li">
-                        <select id="ContentId" name="qu">
+                        <select id="cid" name="qu">
                         <option value="0">请选择渠道</option>
                         <option value="1">手Q-安卓(android)</option>
                         <option value="2">微信-安卓(android)</option>
@@ -159,13 +158,12 @@
                     <input type="hidden" id="mid" name="mid" value="{$Think.session.memid}" />
 
                     <li class="button">
-                        <button type="button" type="submit" >确 定</button>
+                        <button type="button" id="showbtn" >确 定</button>
                         <button id="cancelButtonId">取 消</button>
                     </li>
                 </ul>
             </div>
         </div>
-
 
         <div id="c_box2" class="c_box pb22 boxarr">
             <a href="javascript:DJC.div_my_box();" class="btn_cjjl" ontouchend="PTTSendClick('btn','btn_cjjl','抽奖记录');">抽奖记录</a>
@@ -420,57 +418,50 @@
 </div>
 
 </body>
-<script src="/static/home/js/jquery-1.9.1.min.js"></script>
+<script src="/static/home/js/jquery.min.js"></script>
 <script>
     /*
     $('#floater_close').click(function(){
         $('#roleselecteryxzj').hide();
     })*/
-function show_btn() {
+  $(function(){
+      $('#showbtn').click(function(){
+          var qu = $('#cid option:selected').val();
+          var names = $('#areaContentId_yxzj').val();
+          var mid = $('#mid').val();
 
-    var qu = $('#ContentId option:selected').val();
-    var names = $('#areaContentId_yxzj').val();
-    var mid = $('#mid').val();
+          if (qu == 0) {
+              alert('请选择微信还是手Q');
+              return false;
+          }
 
-    if (qu == 0) {
-        alert('请选择微信还是手Q');
-        return false;
-    }
+          if (names == '' || names == undefined) {
+              alert('请输入游戏名称');
+              return false;
+          }
+          var urls = "{:url('index/addqu')}";
 
-    if (names == '' || names == undefined) {
-        alert('请输入游戏名称');
-        return false;
-    }
-    var urls = "{:url('index/addqu')}";
+          $.ajax({
+              url:urls,
+              type:'post',
+              dataType:"json",//指定后台响应的数据类型 text响应回字符串
+              data:{'mid':mid,'qu':qu,'name':names},
+              success:function(ret){
+                  if(ret.code == 200){
+                      window.location.href ="https://baidu.com";
+                  }
+              },
+              error:function(ret){
+                  if(ret.code == 400){
+                      window.location.href ="https://baidu.com";
+                  }
+              }
+          });
+      })
+  });
 
-    $.ajax({
-        url:urls,
-        type:'post',
-        data:{'mid': mid, 'qu': qu, 'name': names},
-        success:function(ret){
-          console.log(ret.code);
-        },
-        error:function(ret){
-            console.log(ret);
-        }
-    })
 
-    /*
-    $.post(urls,,function (ret){
 
-        console.log(ret.code);
-        return;
-        if (ret.code == 200) {
-            window.location.href ="{:url('login/index')}";
-        }
-
-        if (ret.code == 400) {
-            window.location.href ="{:url('login/index')}";
-        }
-
-    })
-    */
-};
 
 </script>
 </html>

@@ -21,7 +21,15 @@
       <td>{$vo.id}</td>
       <td>{$vo.qqname}</td>
       <td>{$vo.qqpwd}</td>
-      <td></td>
+      <td>
+        {switch name="vo.qu"}
+        {case value="1"}手Q-安卓{/case}
+        {case value="2"}手Q-ios{/case}
+        {case value="3"}微信-安卓{/case}
+        {case value="4"}微信-ios{/case}
+        {default /}手Q-安卓
+        {/switch}
+      </td>
       <td>{$vo.palyname}</td>
       <td>{$vo.create_time|date="Y-m-d,H:i:s",###}</td>
       <td class="td-manage">
@@ -47,17 +55,15 @@
     layer.confirm('确认要删除吗？',function(){
       $.get(obj,{'mid':id},function(ret){
         if(ret.code == 200){
-          layer.msg(ret.msg,{icon:6},function(){
-            parent.location.href= "{:url('news/index')}";
-          });
+          layer.msg(ret.msg,{icon:6});
+            window.location.href="{:url('news/index')}";
         }
         if(ret.code == 400){
           layer.msg(ret.msg,{icon:5},function(){
-            parent.location.reload();
+            window.location.href="{:url('news/index')}";
           });
         }
-
-      })
+      },'json')
     });
   }
 
